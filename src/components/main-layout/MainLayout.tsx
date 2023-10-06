@@ -1,5 +1,7 @@
 export const MainLayout = () => {
   return (
-    <div>MainLayout</div>
+    <div>
+      layout
+    </div>
   )
 }

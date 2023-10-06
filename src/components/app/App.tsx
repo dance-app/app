@@ -1,7 +1,5 @@
-import './App.css'
-
 import { NextUIProvider } from "@nextui-org/react";
-import { MainLayout } from '..';
+import { MainLayout } from '@components';
 
 export const App = () => (
   <NextUIProvider>

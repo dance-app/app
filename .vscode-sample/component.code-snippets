@@ -1,0 +1,21 @@
+{
+  "Create function component": {
+    "prefix": "rfc",
+    "body": [
+      "type ${TM_FILENAME_BASE}Props = {",
+      "",
+      "};",
+      "",
+      "export const ${TM_FILENAME_BASE} = ({}: ${TM_FILENAME_BASE}Props) => {",
+      "",
+      "  return (",
+      "    <div>",
+      "      {children}",
+      "    </div>",
+      "  );",
+      ");",
+      ""
+    ],
+    "description": ""
+  }
+}
