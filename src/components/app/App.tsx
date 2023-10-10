@@ -1,9 +1,12 @@
 import { NextUIProvider } from "@nextui-org/react";
-import { MainLayout } from '@components';
+
+import { RouterProvider } from "@router";
+
+import './App.css'
 
 export const App = () => (
   <NextUIProvider>
-    <MainLayout />
+    <RouterProvider />
   </NextUIProvider>
 )
 

@@ -21,7 +21,15 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@components": ["./src/components/index.ts"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@hooks": ["./src/hooks/index.ts"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@router": ["./src/router/index.ts"],
+      "@router/*": ["./src/router/*"],
+      "@states": ["./src/states/index.ts"],
+      "@states/*": ["./src/states/*"],
+      "@types": ["./src/types/index.ts"],
+      "@types/*": ["./src/types/*"]
     }
   },
   "include": ["src"],

@@ -5,9 +5,12 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    dedupe: ['styled-components', '@tiptap-pro/extension-emoji'],
     alias: {
       '@components': path.resolve(__dirname, './src/components'),
+      '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@router': path.resolve(__dirname, './src/router'),
+      '@states': path.resolve(__dirname, './src/states'),
+      '@types': path.resolve(__dirname, './src/types'),
     },
   },
   plugins: [react()],

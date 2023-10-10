@@ -1,0 +1,9 @@
+
+html,
+body,
+div#root,
+div#root > div {
+  width: 100vw;
+  height: 100vh;
+}
+
