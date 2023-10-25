@@ -29,7 +29,9 @@
       "@states": ["./src/states/index.ts"],
       "@states/*": ["./src/states/*"],
       "@types": ["./src/types/index.ts"],
-      "@types/*": ["./src/types/*"]
+      "@types/*": ["./src/types/*"],
+      "@utils": ["./src/utils/index.ts"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": ["src"],

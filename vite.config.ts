@@ -11,6 +11,7 @@ export default defineConfig({
       '@router': path.resolve(__dirname, './src/router'),
       '@states': path.resolve(__dirname, './src/states'),
       '@types': path.resolve(__dirname, './src/types'),
+      '@utils': path.resolve(__dirname, './src/utils'),
     },
   },
   plugins: [react()],

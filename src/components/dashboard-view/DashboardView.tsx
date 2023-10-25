@@ -3,4 +3,3 @@ export const DashboardView = () => (
     <h1>Dashboard</h1>
   </header>
 )
-
