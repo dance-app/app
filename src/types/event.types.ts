@@ -3,7 +3,7 @@ export type Event = {
   title: string;
   description?: string;
   dateStart: Date;
-  dateEnd: Date;
+  dateEnd?: Date;
   location?: string;
   timezone?: string;
   recurrenceRule?: string | null; // A recurrence rule string, or null for one-time events
