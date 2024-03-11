@@ -1,5 +1,5 @@
+import { Header } from "@components/ui/text";
+
 export const DashboardView = () => (
-  <header>
-    <h1>Dashboard</h1>
-  </header>
+ <Header className="mb-4" value="Dashboard" />
 )

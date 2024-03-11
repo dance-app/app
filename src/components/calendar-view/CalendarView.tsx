@@ -9,7 +9,7 @@ import {
 } from '@utils';
 // import { useEvents } from '@hooks';
 import type { Dayjs } from 'dayjs';
-import { BsArrowRightShort, BsArrowLeftShort } from 'react-icons/bs';
+import {ArrowLeft, ArrowRight} from '@phosphor-icons/react';
 import { Button } from '@components/ui';
 
 type GoToParams = {
@@ -43,12 +43,12 @@ export const CalendarView = () => {
         Today
       </Button>
       <Button onClick={e => goTo(e, 'previous-week')} isIconOnly>
-        <BsArrowLeftShort />
+        <ArrowLeft />
       </Button>
       <Button onClick={e => goTo(e, 'next-week')} isIconOnly>
-        <BsArrowRightShort />
+        <ArrowRight />
       </Button>
-      <div className="w-full grid grid-cols-8 bg-red-300">
+      <div className="grid w-full grid-cols-8 bg-red-300">
         {columns.map(date => <Column key={`column-${date?.toISOString()}`} date={date} />)}
 
         {/* <tbody className='overflow-y-auto'>

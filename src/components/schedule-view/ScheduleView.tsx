@@ -1,10 +1,9 @@
 import { CalendarView } from "@components";
+import { Header } from "@components/ui/text";
 
 export const ScheduleView = () => (
   <>
-    <header>
-      <h1>Schedule</h1>
-    </header>
+    <Header className="mb-4" value="Schedule" />
     <section>
       <CalendarView />
     </section>
