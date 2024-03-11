@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, User, Tooltip, Chip } from "@nextui-org/react";
-import { BsEye, BsPencil, BsTrash3 } from 'react-icons/bs';
+import {Eye, Pencil, Trash} from "@phosphor-icons/react";
 
 import type { Key } from 'react'
 
@@ -97,8 +97,8 @@ export const StudentsTable = () => {
       case "role":
         return (
           <div className="flex flex-col">
-            <p className="text-bold text-sm capitalize">{cellValue}</p>
-            <p className="text-bold text-sm capitalize text-default-400">{user.team}</p>
+            <p className="text-sm capitalize text-bold">{cellValue}</p>
+            <p className="text-sm capitalize text-bold text-default-400">{user.team}</p>
           </div>
         );
       case "status":
@@ -111,18 +111,18 @@ export const StudentsTable = () => {
         return (
           <div className="relative flex items-center gap-2">
             <Tooltip content="Details">
-              <span className="text-xs text-default-400 cursor-pointer active:opacity-50">
-                <BsEye />
+              <span className="text-xs transition-all duration-300 cursor-pointer text-default-400 active:opacity-50">
+                <Eye size={20}/>
               </span>
             </Tooltip>
             <Tooltip content="Edit user">
-              <span className="text-xs text-default-400 cursor-pointer active:opacity-50">
-                <BsPencil />
+              <span className="text-xs transition-all duration-300 cursor-pointer text-default-400 active:opacity-50">
+                <Pencil size={20} />
               </span>
             </Tooltip>
             <Tooltip color="danger" content="Delete user">
-              <span className="text-xs text-danger cursor-pointer active:opacity-50">
-                <BsTrash3 />
+              <span className="text-xs transition-all duration-300 cursor-pointer text-danger active:opacity-50">
+                <Trash size={20} />
               </span>
             </Tooltip>
           </div>
@@ -133,8 +133,15 @@ export const StudentsTable = () => {
   }, []);
 
   return (
-    <Table aria-label="Example table with custom cells" removeWrapper>
-      <TableHeader columns={columns} >
+    <Table   
+    classNames={{
+      td: 'bg-white',
+      th: 'border border-slate-300/50 first:!rounded-l-none last:!rounded-r-none',
+      tbody: 'border border-slate-300/50'
+    }}
+    aria-label="Example table with custom cells" removeWrapper>
+      <TableHeader 
+      columns={columns} >
         {(column) => (
           <TableColumn
             key={column.uid}
@@ -145,7 +152,7 @@ export const StudentsTable = () => {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody items={users}>
+      <TableBody className='border rounded-md border-slate-200' items={users}>
         {(item) => (
           <TableRow key={item.id}>
             {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}

@@ -1,15 +1,15 @@
-import { Outlet } from '@tanstack/react-router'
+import { Outlet } from "@tanstack/react-router";
 
-import { Logo, Navigation } from "@components"
+import { Logo, Navigation } from "@components";
 
 export const MainLayout = () => (
-  <div className="h-full flex text-slate-600">
-    <aside className="flex flex-col w-60 p-3 gap-1">
+  <div className="flex h-full text-slate-600">
+    <aside className="flex flex-col gap-1 border-r w-60 border-slate-200">
       <Logo />
       <Navigation />
     </aside>
-    <main className='grow bg-slate-100 p-4 max-h-screen overflow-y-auto'>
+    <main className="max-h-screen p-4 overflow-y-auto grow bg-slate-100">
       <Outlet />
     </main>
   </div>
-)
+);
