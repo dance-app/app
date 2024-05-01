@@ -1,6 +1,7 @@
 export * from './app';
 export * from './calendar-view';
 export * from './dashboard-view';
+export * from './login-form';
 export * from './logo';
 export * from './main-layout';
 export * from './navigation';

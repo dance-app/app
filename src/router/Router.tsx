@@ -4,8 +4,9 @@ import {
   RootRoute,
 } from '@tanstack/react-router'
 
+import { LoginView } from '@components/auth-view'
 import { DashboardView } from '@components/dashboard-view'
-import { ScheduleView } from '@components/schedule-view'
+// import { ScheduleView } from '@components/schedule-view'
 import { StudentsView } from '@components/students-view'
 import { MainLayout } from '@components/main-layout'
 
@@ -17,17 +18,23 @@ declare module '@tanstack/react-router' {
 
 const rootRoute = new RootRoute({ component: MainLayout })
 
+const authLoginRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/auth/login',
+  component: LoginView,
+})
+
 const dashboardRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/',
   component: DashboardView,
 })
 
-const scheduleRoute = new Route({
-  getParentRoute: () => rootRoute,
-  path: '/schedule',
-  component: ScheduleView
-})
+// const scheduleRoute = new Route({
+//   getParentRoute: () => rootRoute,
+//   path: '/schedule',
+//   component: ScheduleView
+// })
 
 const studentRoute = new Route({
   getParentRoute: () => rootRoute,
@@ -37,8 +44,9 @@ const studentRoute = new Route({
 
 
 const routeTree = rootRoute.addChildren([
+  authLoginRoute,
   dashboardRoute,
-  scheduleRoute,
+  // scheduleRoute,
   studentRoute,
 ])
 

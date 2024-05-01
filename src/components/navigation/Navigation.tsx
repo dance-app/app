@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { AppWindow, Calendar, Student } from "@phosphor-icons/react";
+import { AppWindow, Student } from "@phosphor-icons/react";
 
 export const Navigation = () => {
   const links = [
     { to: "/", label: "Dashboard", icon: AppWindow },
-    { to: "/schedule", label: "Schedule", icon: Calendar },
+    // { to: "/schedule", label: "Schedule", icon: Calendar },
     { to: "/students", label: "Students", icon: Student },
   ] as const;
 
