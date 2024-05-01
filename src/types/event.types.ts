@@ -1,13 +1,13 @@
 export type Event = {
-  id: number;
-  title: string;
-  description?: string;
-  dateStart: Date;
-  dateEnd?: Date;
-  location?: string;
-  timezone?: string;
-  recurrenceRule?: string | null; // A recurrence rule string, or null for one-time events
-};
+  id: number
+  title: string
+  description?: string
+  dateStart: Date
+  dateEnd?: Date
+  location?: string
+  timezone?: string
+  recurrenceRule?: string | null // A recurrence rule string, or null for one-time events
+}
 
 // example of rule
 

@@ -5,12 +5,12 @@ import {
   getStartOfWeek,
   getNumberArray,
   getNextWeek,
-  getPreviousWeek
-} from '@utils';
+  getPreviousWeek,
+} from '@utils'
 // import { useEvents } from '@hooks';
-import type { Dayjs } from 'dayjs';
-import {ArrowLeft, ArrowRight} from '@phosphor-icons/react';
-import { Button } from '@components/ui';
+import type { Dayjs } from 'dayjs'
+import { ArrowLeft, ArrowRight } from '@phosphor-icons/react'
+import { Button } from '@components/ui'
 
 type GoToParams = {
   when: 'today' | 'next-week' | 'previous-week'
@@ -19,8 +19,11 @@ type GoToParams = {
 const hoursArray = getNumberArray(24)
 
 export const CalendarView = () => {
-  const [currentDate, setCurrentDate] = useState(date());
-  const startOfWeek = useMemo(() => getStartOfWeek(currentDate, 1), [currentDate])
+  const [currentDate, setCurrentDate] = useState(date())
+  const startOfWeek = useMemo(
+    () => getStartOfWeek(currentDate, 1),
+    [currentDate],
+  )
   const weekDays = useMemo(() => generateWeekDates(startOfWeek), [startOfWeek])
   // const { events } = useEvents({ startDate: startOfWeek, endDate: [...weekDays].pop() as Dayjs })
   // console.log('events', events)
@@ -29,9 +32,10 @@ export const CalendarView = () => {
     e.stopPropagation()
     e.preventDefault()
     if (when === 'today') return setCurrentDate(date())
-    const newDate = when === 'next-week'
-      ? getNextWeek(currentDate)
-      : getPreviousWeek(currentDate)
+    const newDate =
+      when === 'next-week'
+        ? getNextWeek(currentDate)
+        : getPreviousWeek(currentDate)
     setCurrentDate(newDate)
   }
 
@@ -39,9 +43,7 @@ export const CalendarView = () => {
 
   return (
     <div className="w-full h-full">
-      <Button onClick={e => goTo(e, 'today')}>
-        Today
-      </Button>
+      <Button onClick={e => goTo(e, 'today')}>Today</Button>
       <Button onClick={e => goTo(e, 'previous-week')} isIconOnly>
         <ArrowLeft />
       </Button>
@@ -49,7 +51,9 @@ export const CalendarView = () => {
         <ArrowRight />
       </Button>
       <div className="grid w-full grid-cols-8 bg-red-300">
-        {columns.map(date => <Column key={`column-${date?.toISOString()}`} date={date} />)}
+        {columns.map(date => (
+          <Column key={`column-${date?.toISOString()}`} date={date} />
+        ))}
 
         {/* <tbody className='overflow-y-auto'>
           {hoursArray.map(number => (
@@ -80,11 +84,7 @@ const Column = ({ date }: ColumnProps) => {
     <div className="relative">
       <ColumnHeader date={date} />
       {hoursArray.map(hour => (
-        <Cell
-          key={`cell-${hour}`}
-          hour={hour}
-          isHoursShown={isFirstColumn}
-        />
+        <Cell key={`cell-${hour}`} hour={hour} isHoursShown={isFirstColumn} />
       ))}
     </div>
   )
@@ -101,7 +101,7 @@ const ColumnHeader = ({ date }: ColumnHeaderProps) => {
 }
 
 type CellProps = {
-  isHoursShown: boolean,
+  isHoursShown: boolean
   hour: number
 }
 

@@ -1,6 +1,6 @@
-import { Outlet } from "@tanstack/react-router";
+import { Outlet } from '@tanstack/react-router'
 
-import { Logo, Navigation } from "@components";
+import { Logo, Navigation } from '@components'
 
 export const MainLayout = () => (
   <div className="flex h-full text-slate-600">
@@ -12,4 +12,4 @@ export const MainLayout = () => (
       <Outlet />
     </main>
   </div>
-);
+)

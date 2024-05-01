@@ -1,5 +1,5 @@
-import { CalendarView } from "@components";
-import { Header } from "@components/ui/text";
+import { CalendarView } from '@components'
+import { Header } from '@components/ui/text'
 
 export const ScheduleView = () => (
   <>
@@ -9,4 +9,3 @@ export const ScheduleView = () => (
     </section>
   </>
 )
-

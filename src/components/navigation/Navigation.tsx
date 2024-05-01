@@ -1,12 +1,12 @@
-import { Link } from "@tanstack/react-router";
-import { AppWindow, Student } from "@phosphor-icons/react";
+import { Link } from '@tanstack/react-router'
+import { AppWindow, Student } from '@phosphor-icons/react'
 
 export const Navigation = () => {
   const links = [
-    { to: "/", label: "Dashboard", icon: AppWindow },
+    { to: '/', label: 'Dashboard', icon: AppWindow },
     // { to: "/schedule", label: "Schedule", icon: Calendar },
-    { to: "/students", label: "Students", icon: Student },
-  ] as const;
+    { to: '/students', label: 'Students', icon: Student },
+  ] as const
 
   return (
     <nav>
@@ -28,5 +28,5 @@ export const Navigation = () => {
         ))}
       </ul>
     </nav>
-  );
-};
+  )
+}

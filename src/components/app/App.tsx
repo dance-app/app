@@ -1,7 +1,7 @@
-import { NextUIProvider } from "@nextui-org/react";
+import { NextUIProvider } from '@nextui-org/react'
 
-import { RouterProvider } from "@router";
-import { QueryProvider } from "@utils";
+import { RouterProvider } from '@router'
+import { QueryProvider } from '@utils'
 
 import './App.css'
 

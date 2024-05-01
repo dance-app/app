@@ -1,1 +1,1 @@
-export * from './ScheduleView';
+export * from './ScheduleView'

@@ -1,16 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
-import type { Event } from '@types';
-import type { Dayjs } from 'dayjs';
+import { useQuery } from '@tanstack/react-query'
+import type { Event } from '@types'
+import type { Dayjs } from 'dayjs'
 
 type UseEvents = (params: { startDate: Dayjs; endDate: Dayjs }) => {
-  events: Event[] | undefined;
-  isLoading: boolean;
-  error: unknown;
-};
+  events: Event[] | undefined
+  isLoading: boolean
+  error: unknown
+}
 
 type QueryData = {
-  events: Event[];
-};
+  events: Event[]
+}
 
 const mockEventData: Event[] = [
   {
@@ -63,23 +63,23 @@ const mockEventData: Event[] = [
     timezone: 'UTC',
     recurrenceRule: 'FREQ=WEEKLY;BYDAY=SA',
   },
-];
+]
 
-export const useEvents: UseEvents = (params) => {
+export const useEvents: UseEvents = params => {
   const query = useQuery<QueryData>({
     queryKey: [params.startDate.toISOString(), params.endDate.toISOString()],
     queryFn: () => {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         setTimeout(() => {
-          resolve({ events: mockEventData });
-        }, 500);
-      });
+          resolve({ events: mockEventData })
+        }, 500)
+      })
     },
-  });
+  })
 
   return {
     events: query.data?.events,
     isLoading: query.isLoading,
     error: query.error,
-  };
-};
+  }
+}

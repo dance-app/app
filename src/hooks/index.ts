@@ -1,2 +1,2 @@
-export * from './useCurrentUser';
-export * from './useEvents';
+export * from './useCurrentUser'
+export * from './useEvents'

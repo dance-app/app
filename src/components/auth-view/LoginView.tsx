@@ -1,5 +1,5 @@
-import { LoginForm } from "@components";
-import { Header } from "@components/ui/text";
+import { LoginForm } from '@components'
+import { Header } from '@components/ui/text'
 
 export const LoginView = () => (
   <>

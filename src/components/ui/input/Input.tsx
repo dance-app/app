@@ -1,3 +1,3 @@
-import {Input as InputNextUI, type InputProps} from "@nextui-org/react";
+import { Input as InputNextUI, type InputProps } from '@nextui-org/react'
 
-export const Input = ({ ...props }: InputProps) =>  <InputNextUI {...props}/>
+export const Input = ({ ...props }: InputProps) => <InputNextUI {...props} />
