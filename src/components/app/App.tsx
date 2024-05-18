@@ -1,6 +1,8 @@
 import { NextUIProvider } from '@nextui-org/react'
+import { Provider as StateProvider } from 'jotai'
 
 import { QueryProvider } from '@utils'
+import { store } from '@states'
 
 import './App.css'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
@@ -17,7 +19,9 @@ declare module "@tanstack/react-router" {
 export const App = () => (
   <QueryProvider>
     <NextUIProvider>
-      <AuthRouter />
+      <StateProvider store={store}>
+        <AuthRouter />
+      </StateProvider>
     </NextUIProvider>
   </QueryProvider>
 )

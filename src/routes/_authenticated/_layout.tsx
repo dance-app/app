@@ -1,11 +1,20 @@
 import { Outlet, createFileRoute } from '@tanstack/react-router'
 import { Logo, Navigation } from '@components'
+import { fetchApi } from '@utils'
+import {useQuery} from '@tanstack/react-query'
 
 export const Route = createFileRoute('/_authenticated/_layout')({
   component: LayoutComponent,
 })
 
 function LayoutComponent() {
+  const query = useQuery({
+    queryKey: ['me'],
+    queryFn: () => fetchApi('users/me')
+  })
+
+  if (!query.isFetched || query.isLoading) return <p>Loading</p>
+
   return (
     <div className="flex h-full text-slate-600">
       <aside className="flex flex-col border-r w-60 border-slate-200">

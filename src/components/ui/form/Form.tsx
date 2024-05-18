@@ -1,9 +1,5 @@
-import { ReactNode } from 'react'
+import { FormHTMLAttributes } from 'react'
 
-type FormProps = {
-  children: ReactNode
-}
+interface FormProps extends FormHTMLAttributes<HTMLFormElement> { }
 
-export const Form = ({ children, ...props }: FormProps) => {
-  return <form {...props}>{children}</form>
-}
+export const Form = ({ children, ...props }: FormProps) => <form {...props}>{children}</form>

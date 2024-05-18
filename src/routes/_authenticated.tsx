@@ -1,12 +1,14 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
+import { token } from '@states'
 
 export const Route = createFileRoute('/_authenticated')({
-  beforeLoad: ({context}) => {
-    console.log('context', context)
-    if (!context.auth) {
+  beforeLoad: () => {
+    const tokenData = token.get()
+    if (!tokenData) {
       throw redirect({
         to: '/login'
       })
     }
   }
 })
+

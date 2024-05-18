@@ -1,3 +1,5 @@
 export * from './array.utils'
 export * from './date.utils'
+export * from './fetch.utils'
 export * from './query.utils'
+export * from './string.utils'
