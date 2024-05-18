@@ -37,7 +37,7 @@ export const useSignIn = () => {
         throw new Error('message' in response ? response.message : 'no-token')
       })
     },
-    onSuccess: () => navigate({ to: '/members' }),
+    onSuccess: () => navigate({ to: '/students' }),
     onError: (error: unknown) => console.log('error', error),
   })
 
