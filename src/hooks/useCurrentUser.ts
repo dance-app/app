@@ -1,21 +1,16 @@
-// import { currentUser } from '@states';
 import type { User } from '@types'
-import { useState } from 'react'
+import { fetchApi } from '@utils'
+import { useQuery } from '@tanstack/react-query'
 
-type UseCurrentUser = () => {
-  me: User | null
-  isLoading: boolean
-  error: string | null
-}
-
-export const useCurrentUser: UseCurrentUser = () => {
-  // const [value] = useAtom<User | null>(currentUser);
-  const [isLoading] = useState(true)
-  const [error] = useState(null)
+export const useCurrentUser = () => {
+  const query = useQuery<User>({
+    queryKey: ['me'],
+    queryFn: () => fetchApi('users/me'),
+  })
 
   return {
-    me: null,
-    isLoading,
-    error,
+    me: query.data,
+    isLoading: !query.isFetched || query.isLoading,
+    error: query.error,
   }
 }

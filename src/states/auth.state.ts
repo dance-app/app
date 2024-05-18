@@ -2,9 +2,11 @@ import { atomWithStorage } from 'jotai/utils'
 import { store } from './store.state'
 import { removeQuotes } from '@utils'
 
+const LocalKeyToken = 'token' as const
+
 const tokenAtom = atomWithStorage<null | string>(
   'token',
-  localStorage.getItem('token') || null,
+  localStorage.getItem(LocalKeyToken) || null,
 )
 
 export const token = {
@@ -12,5 +14,12 @@ export const token = {
     const t = store.get(tokenAtom)
     return t ? removeQuotes(t) : null
   },
-  set: (newValue: string | null) => store.set(tokenAtom, () => newValue),
+  set: (newValue: string | null) => {
+    if (newValue === null) {
+      store.set(tokenAtom, () => null)
+      localStorage.removeItem(LocalKeyToken)
+    } else {
+      store.set(tokenAtom, () => newValue)
+    }
+  },
 }
