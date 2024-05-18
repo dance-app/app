@@ -16,9 +16,9 @@ import { Route as AuthLayoutImport } from './routes/_auth-layout'
 import { Route as AuthenticatedLayoutImport } from './routes/_authenticated/_layout'
 import { Route as AuthLayoutSignUpImport } from './routes/_auth-layout/sign-up'
 import { Route as AuthLayoutLoginImport } from './routes/_auth-layout/login'
-import { Route as AuthenticatedLayoutMembersIndexImport } from './routes/_authenticated/_layout/members/index'
+import { Route as AuthenticatedLayoutStudentsIndexImport } from './routes/_authenticated/_layout/students/index'
+import { Route as AuthenticatedLayoutStudentsIdImport } from './routes/_authenticated/_layout/students/$id'
 import { Route as AuthenticatedLayoutSettingsProfileImport } from './routes/_authenticated/_layout/settings/profile'
-import { Route as AuthenticatedLayoutMembersIdImport } from './routes/_authenticated/_layout/members/$id'
 
 // Create/Update Routes
 
@@ -47,21 +47,21 @@ const AuthLayoutLoginRoute = AuthLayoutLoginImport.update({
   getParentRoute: () => AuthLayoutRoute,
 } as any)
 
-const AuthenticatedLayoutMembersIndexRoute =
-  AuthenticatedLayoutMembersIndexImport.update({
-    path: '/members/',
+const AuthenticatedLayoutStudentsIndexRoute =
+  AuthenticatedLayoutStudentsIndexImport.update({
+    path: '/students/',
+    getParentRoute: () => AuthenticatedLayoutRoute,
+  } as any)
+
+const AuthenticatedLayoutStudentsIdRoute =
+  AuthenticatedLayoutStudentsIdImport.update({
+    path: '/students/$id',
     getParentRoute: () => AuthenticatedLayoutRoute,
   } as any)
 
 const AuthenticatedLayoutSettingsProfileRoute =
   AuthenticatedLayoutSettingsProfileImport.update({
     path: '/settings/profile',
-    getParentRoute: () => AuthenticatedLayoutRoute,
-  } as any)
-
-const AuthenticatedLayoutMembersIdRoute =
-  AuthenticatedLayoutMembersIdImport.update({
-    path: '/members/$id',
     getParentRoute: () => AuthenticatedLayoutRoute,
   } as any)
 
@@ -104,13 +104,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedLayoutImport
       parentRoute: typeof AuthenticatedImport
     }
-    '/_authenticated/_layout/members/$id': {
-      id: '/_authenticated/_layout/members/$id'
-      path: '/members/$id'
-      fullPath: '/members/$id'
-      preLoaderRoute: typeof AuthenticatedLayoutMembersIdImport
-      parentRoute: typeof AuthenticatedLayoutImport
-    }
     '/_authenticated/_layout/settings/profile': {
       id: '/_authenticated/_layout/settings/profile'
       path: '/settings/profile'
@@ -118,11 +111,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedLayoutSettingsProfileImport
       parentRoute: typeof AuthenticatedLayoutImport
     }
-    '/_authenticated/_layout/members/': {
-      id: '/_authenticated/_layout/members/'
-      path: '/members'
-      fullPath: '/members'
-      preLoaderRoute: typeof AuthenticatedLayoutMembersIndexImport
+    '/_authenticated/_layout/students/$id': {
+      id: '/_authenticated/_layout/students/$id'
+      path: '/students/$id'
+      fullPath: '/students/$id'
+      preLoaderRoute: typeof AuthenticatedLayoutStudentsIdImport
+      parentRoute: typeof AuthenticatedLayoutImport
+    }
+    '/_authenticated/_layout/students/': {
+      id: '/_authenticated/_layout/students/'
+      path: '/students'
+      fullPath: '/students'
+      preLoaderRoute: typeof AuthenticatedLayoutStudentsIndexImport
       parentRoute: typeof AuthenticatedLayoutImport
     }
   }
@@ -137,9 +137,9 @@ export const routeTree = rootRoute.addChildren({
   }),
   AuthenticatedRoute: AuthenticatedRoute.addChildren({
     AuthenticatedLayoutRoute: AuthenticatedLayoutRoute.addChildren({
-      AuthenticatedLayoutMembersIdRoute,
       AuthenticatedLayoutSettingsProfileRoute,
-      AuthenticatedLayoutMembersIndexRoute,
+      AuthenticatedLayoutStudentsIdRoute,
+      AuthenticatedLayoutStudentsIndexRoute,
     }),
   }),
 })
