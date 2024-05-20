@@ -13,6 +13,7 @@ import {
 import { Eye, Pencil, Trash } from '@phosphor-icons/react'
 
 import type { Key } from 'react'
+import { useWorkspaceMembers } from '@hooks'
 
 const statusColorMap = {
   active: 'success' as const,
@@ -90,6 +91,8 @@ const users: {
 ]
 
 export const StudentsTable = () => {
+  const {members}=useWorkspaceMembers()
+  console.log('members', members)
   const renderCell = useCallback((user: (typeof users)[0], columnKey: Key) => {
     const cellValue = user[columnKey as keyof typeof user]
 
@@ -100,9 +103,7 @@ export const StudentsTable = () => {
             avatarProps={{ radius: 'lg', src: user.avatar }}
             description={user.email}
             name={cellValue}
-          >
-            {user.email}
-          </User>
+          />
         )
       case 'role':
         return (

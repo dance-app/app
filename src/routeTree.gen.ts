@@ -11,71 +11,57 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as PublicLayoutImport } from './routes/_public-layout'
+import { Route as LayoutImport } from './routes/_layout'
 import { Route as AuthenticatedImport } from './routes/_authenticated'
-import { Route as AuthLayoutImport } from './routes/_auth-layout'
-import { Route as AuthenticatedLayoutImport } from './routes/_authenticated/_layout'
-import { Route as AuthLayoutSignUpImport } from './routes/_auth-layout/sign-up'
-import { Route as AuthLayoutLoginImport } from './routes/_auth-layout/login'
-import { Route as AuthenticatedLayoutStudentsIndexImport } from './routes/_authenticated/_layout/students/index'
-import { Route as AuthenticatedLayoutStudentsIdImport } from './routes/_authenticated/_layout/students/$id'
-import { Route as AuthenticatedLayoutSettingsProfileImport } from './routes/_authenticated/_layout/settings/profile'
+import { Route as PublicLayoutSignUpImport } from './routes/_public-layout/sign-up'
+import { Route as PublicLayoutLoginImport } from './routes/_public-layout/login'
+import { Route as LayoutWorkspaceSlugStudentsIndexImport } from './routes/_layout/$workspace-slug/students/index'
+import { Route as LayoutWorkspaceSlugStudentsIdImport } from './routes/_layout/$workspace-slug/students/$id'
 
 // Create/Update Routes
+
+const PublicLayoutRoute = PublicLayoutImport.update({
+  id: '/_public-layout',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LayoutRoute = LayoutImport.update({
+  id: '/_layout',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const AuthenticatedRoute = AuthenticatedImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRoute,
 } as any)
 
-const AuthLayoutRoute = AuthLayoutImport.update({
-  id: '/_auth-layout',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const AuthenticatedLayoutRoute = AuthenticatedLayoutImport.update({
-  id: '/_layout',
-  getParentRoute: () => AuthenticatedRoute,
-} as any)
-
-const AuthLayoutSignUpRoute = AuthLayoutSignUpImport.update({
+const PublicLayoutSignUpRoute = PublicLayoutSignUpImport.update({
   path: '/sign-up',
-  getParentRoute: () => AuthLayoutRoute,
+  getParentRoute: () => PublicLayoutRoute,
 } as any)
 
-const AuthLayoutLoginRoute = AuthLayoutLoginImport.update({
+const PublicLayoutLoginRoute = PublicLayoutLoginImport.update({
   path: '/login',
-  getParentRoute: () => AuthLayoutRoute,
+  getParentRoute: () => PublicLayoutRoute,
 } as any)
 
-const AuthenticatedLayoutStudentsIndexRoute =
-  AuthenticatedLayoutStudentsIndexImport.update({
-    path: '/students/',
-    getParentRoute: () => AuthenticatedLayoutRoute,
+const LayoutWorkspaceSlugStudentsIndexRoute =
+  LayoutWorkspaceSlugStudentsIndexImport.update({
+    path: '/$workspace-slug/students/',
+    getParentRoute: () => LayoutRoute,
   } as any)
 
-const AuthenticatedLayoutStudentsIdRoute =
-  AuthenticatedLayoutStudentsIdImport.update({
-    path: '/students/$id',
-    getParentRoute: () => AuthenticatedLayoutRoute,
-  } as any)
-
-const AuthenticatedLayoutSettingsProfileRoute =
-  AuthenticatedLayoutSettingsProfileImport.update({
-    path: '/settings/profile',
-    getParentRoute: () => AuthenticatedLayoutRoute,
+const LayoutWorkspaceSlugStudentsIdRoute =
+  LayoutWorkspaceSlugStudentsIdImport.update({
+    path: '/$workspace-slug/students/$id',
+    getParentRoute: () => LayoutRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_auth-layout': {
-      id: '/_auth-layout'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AuthLayoutImport
-      parentRoute: typeof rootRoute
-    }
     '/_authenticated': {
       id: '/_authenticated'
       path: ''
@@ -83,47 +69,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedImport
       parentRoute: typeof rootRoute
     }
-    '/_auth-layout/login': {
-      id: '/_auth-layout/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof AuthLayoutLoginImport
-      parentRoute: typeof AuthLayoutImport
-    }
-    '/_auth-layout/sign-up': {
-      id: '/_auth-layout/sign-up'
-      path: '/sign-up'
-      fullPath: '/sign-up'
-      preLoaderRoute: typeof AuthLayoutSignUpImport
-      parentRoute: typeof AuthLayoutImport
-    }
-    '/_authenticated/_layout': {
-      id: '/_authenticated/_layout'
+    '/_layout': {
+      id: '/_layout'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof AuthenticatedLayoutImport
-      parentRoute: typeof AuthenticatedImport
+      preLoaderRoute: typeof LayoutImport
+      parentRoute: typeof rootRoute
     }
-    '/_authenticated/_layout/settings/profile': {
-      id: '/_authenticated/_layout/settings/profile'
-      path: '/settings/profile'
-      fullPath: '/settings/profile'
-      preLoaderRoute: typeof AuthenticatedLayoutSettingsProfileImport
-      parentRoute: typeof AuthenticatedLayoutImport
+    '/_public-layout': {
+      id: '/_public-layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof PublicLayoutImport
+      parentRoute: typeof rootRoute
     }
-    '/_authenticated/_layout/students/$id': {
-      id: '/_authenticated/_layout/students/$id'
-      path: '/students/$id'
-      fullPath: '/students/$id'
-      preLoaderRoute: typeof AuthenticatedLayoutStudentsIdImport
-      parentRoute: typeof AuthenticatedLayoutImport
+    '/_public-layout/login': {
+      id: '/_public-layout/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof PublicLayoutLoginImport
+      parentRoute: typeof PublicLayoutImport
     }
-    '/_authenticated/_layout/students/': {
-      id: '/_authenticated/_layout/students/'
-      path: '/students'
-      fullPath: '/students'
-      preLoaderRoute: typeof AuthenticatedLayoutStudentsIndexImport
-      parentRoute: typeof AuthenticatedLayoutImport
+    '/_public-layout/sign-up': {
+      id: '/_public-layout/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof PublicLayoutSignUpImport
+      parentRoute: typeof PublicLayoutImport
+    }
+    '/_layout/$workspace-slug/students/$id': {
+      id: '/_layout/$workspace-slug/students/$id'
+      path: '/$workspace-slug/students/$id'
+      fullPath: '/$workspace-slug/students/$id'
+      preLoaderRoute: typeof LayoutWorkspaceSlugStudentsIdImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/$workspace-slug/students/': {
+      id: '/_layout/$workspace-slug/students/'
+      path: '/$workspace-slug/students'
+      fullPath: '/$workspace-slug/students'
+      preLoaderRoute: typeof LayoutWorkspaceSlugStudentsIndexImport
+      parentRoute: typeof LayoutImport
     }
   }
 }
@@ -131,16 +117,13 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren({
-  AuthLayoutRoute: AuthLayoutRoute.addChildren({
-    AuthLayoutLoginRoute,
-    AuthLayoutSignUpRoute,
+  LayoutRoute: LayoutRoute.addChildren({
+    LayoutWorkspaceSlugStudentsIdRoute,
+    LayoutWorkspaceSlugStudentsIndexRoute,
   }),
-  AuthenticatedRoute: AuthenticatedRoute.addChildren({
-    AuthenticatedLayoutRoute: AuthenticatedLayoutRoute.addChildren({
-      AuthenticatedLayoutSettingsProfileRoute,
-      AuthenticatedLayoutStudentsIdRoute,
-      AuthenticatedLayoutStudentsIndexRoute,
-    }),
+  PublicLayoutRoute: PublicLayoutRoute.addChildren({
+    PublicLayoutLoginRoute,
+    PublicLayoutSignUpRoute,
   }),
 })
 

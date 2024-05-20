@@ -5,11 +5,13 @@ import {
   DropdownMenu,
   DropdownItem
 } from '@nextui-org/react'
-import { User } from '@types'
-import { useSignOut } from '@hooks'
+import { useCurrentUser, useSignOut } from '@hooks'
 
-export const UserAccountAvatar = ({ user }: { user: User }) => {
+export const UserAccountAvatar = () => {
+  const { me } = useCurrentUser()
   const { signOut } = useSignOut()
+
+  if (!me) return null
 
   return (
     <Dropdown>
@@ -17,14 +19,14 @@ export const UserAccountAvatar = ({ user }: { user: User }) => {
         <Avatar
           isBordered
           as="button"
-          name={user.fullName}
+          name={me.fullName}
           size='sm'
         />
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
         <DropdownItem key="profile" className="h-14 gap-2 pointer-events-none" textValue='profile'>
           <p className="font-semibold">Signed in as</p>
-          <p className="">{user.account.email}</p>
+          <p className="">{me.account.email}</p>
         </DropdownItem>
         <DropdownItem key="delete" className="text-danger" color="danger" textValue='logout' onClick={signOut}>
           Logout
